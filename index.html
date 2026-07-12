@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BI Portfólió</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1020;
+    --bg-2: #0e1428;
+    --surface: #131b31;
+    --surface-2: #182140;
+    --line: #24304f;
+    --text: #e7ecf5;
+    --muted: #8a97b5;
+    --cyan: #2ee6dc;
+    --violet: #a06bff;
+    --glow-cyan: rgba(46, 230, 220, 0.35);
+    --glow-violet: rgba(160, 107, 255, 0.3);
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* isometric grid glow behind hero */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 46px 46px;
+    opacity: 0.14;
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+  header {
+    padding: 88px 0 48px;
+  }
+
+  .eyebrow {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--glow-cyan);
+  }
+
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 6vw, 66px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  h1 .accent {
+    background: linear-gradient(100deg, var(--cyan), var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lead {
+    margin-top: 22px;
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  .meta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .chip {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13px;
+    padding: 8px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    background: var(--surface);
+  }
+  .chip a { color: var(--cyan); text-decoration: none; }
+  .chip a:hover { text-decoration: underline; }
+
+  /* ---------- FILTERS ---------- */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 46px 0 30px;
+    padding-top: 34px;
+    border-top: 1px solid var(--line);
+  }
+  .filter-btn {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--cyan); }
+  .filter-btn.active {
+    color: var(--bg);
+    background: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 22px var(--glow-cyan);
+    font-weight: 600;
+  }
+
+  /* ---------- GRID ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 26px;
+    padding-bottom: 90px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 18px 40px -18px var(--glow-cyan);
+  }
+  .card.featured { grid-column: 1 / -1; }
+
+  .frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .card.featured .frame { aspect-ratio: 16 / 7; }
+  .frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  .frame .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--muted);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card-body h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .card-body p { color: var(--muted); font-size: 15px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 2px; }
+  .tag {
+    font-size: 12px;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--violet);
+    background: rgba(160, 107, 255, 0.1);
+    border: 1px solid rgba(160, 107, 255, 0.25);
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  .card-foot {
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .open-link {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    color: var(--cyan);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .open-link:hover { gap: 11px; }
+  .open-link svg { transition: transform 0.18s ease; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 34px 0 60px;
+    color: var(--muted);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  footer a { color: var(--cyan); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    header { padding: 60px 0 34px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <span class="eyebrow" id="eyebrow">Power BI · Fabric</span>
+      <h1 id="title"></h1>
+      <p class="lead" id="lead"></p>
+      <div class="meta" id="meta"></div>
+    </header>
+
+    <nav class="filters" id="filters" aria-label="Szűrés téma szerint"></nav>
+
+    <main class="grid" id="grid"></main>
+
+    <footer>
+      <span id="foot-left"></span>
+      <span id="foot-right"></span>
+    </footer>
+  </div>
+
+<script>
+/* ============================================================
+   1. PROFIL  — írd át a saját adataidra
+   ============================================================ */
+const profile = {
+  eyebrow: "Power BI · Microsoft Fabric",
+  nameLead: "BI",                 // normál színnel
+  nameAccent: "portfólió",        // színátmenetes kiemeléssel
+  lead: "Interaktív riportok és dashboardok egy helyen. Kattints bármelyikbe a felfedezéshez.",
+  meta: [
+    { label: "Kovács-Volf Diána" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/diana-kovacs-volf/" },
+    { label: "Kapcsolat", url: "mailto:volfdia191@gmail.com" }
+  ],
+  footerLeft: "© 2026 Kovács-Volf Diána",
+  footerRight: { label: "Készült Power BI Publish to Web beágyazással", url: "" }
+};
+
+/* ============================================================
+   2. RIPORTOK — minden új riporthoz adj egy blokkot a listához.
+   embed: a Power BI "Beágyazás weboldalon / Publish to Web"
+          kódból KIMÁSOLT src URL (app.powerbi.com/view?r=...).
+          Ha üresen hagyod, egy helykitöltő jelenik meg.
+   featured: true  -> teljes szélességű, kiemelt kártya
+   tags: a szűrőgombok ezekből épülnek fel automatikusan
+   ============================================================ */
+const reports = [
+  {
+    title: "AI2030 – AI hatása a munkaerőpiacra",
+    description: "Teljesen AI-asszisztált, 4 oldalas riport Power BI MCP-vel és Deneb egyedi vizuálokkal, 2 délutányi fejlesztési idő alatt.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiYzIyZjIxODMtYjJhZS00YWMzLTk4YjAtYjhkMmNmOTQwNjhhIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["AI", "MCP", "Deneb"],
+    featured: true
+  },
+  {
+    title: "Agentic RAG hallucináció elemzés",
+    description: "AI-asszisztált modell egyedi Deneb vizuálokkal és gombnyomásra váltható dinamikus kétnyelvűséggel.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiNDJmYzEwMDctZDc1My00YWJhLWE1ODUtYzAyMDYxYzMxZTA1IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["AI", "Deneb", "RAG"]
+  },
+  {
+    title: "Pénzügyi beszámoló dashboard",
+    description: "Eredménykimutatás, mérleg, valamint korosított vevői és szállítói tartozások. Világos/sötét téma választás és exportálható főkönyvi kivonat.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiZTEyYWNlMmEtZGI1Ny00MWEyLTllNTEtOWI4MGM3MzFkZTVjIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Controlling", "IBCS", "Finance"]
+  },
+  {
+    title: "Forma-1 statisztikák (1950–2021)",
+    description: "Formula-1 történeti adatok feldolgozása, dinamikus szűréssel és vizualizációs váltással.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiMDU2NTQ3YzItY2FhNi00OGI1LWJlNjItM2YzZjUxMjhlNGI0IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Sport", "Adatelemzés"]
+  },
+  {
+    title: "Sales riport – UX fókusz",
+    description: "Fiktív értékesítési adathalmazból épített interaktív riport, bookmark-alapú navigációval és dinamikus szűréssel.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiM2Y2ODcxNzgtY2Q1Yi00NTAxLTgwZDctZmViMTg5YWRlMWUzIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Sales", "UX"]
+  },
+  {
+    title: "BMW értékesítés elemzés",
+    description: "Márka- és modellszintű értékesítési dashboard, versenyre készült riport.",
+    embed: "",
+    tags: ["Automotive", "Verseny"]
+  }
+];
+
+/* ============================================================
+   3. RENDER — ez alá már nem kell nyúlnod
+   ============================================================ */
+document.getElementById("eyebrow").textContent = profile.eyebrow;
+document.getElementById("title").innerHTML =
+  `${profile.nameLead} <span class="accent">${profile.nameAccent}</span>`;
+document.getElementById("lead").textContent = profile.lead;
+
+const metaEl = document.getElementById("meta");
+profile.meta.forEach(m => {
+  const chip = document.createElement("span");
+  chip.className = "chip";
+  chip.innerHTML = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.label}</a>` : m.label;
+  metaEl.appendChild(chip);
+});
+
+document.getElementById("foot-left").textContent = profile.footerLeft;
+const fr = document.getElementById("foot-right");
+fr.innerHTML = profile.footerRight.url
+  ? `<a href="${profile.footerRight.url}" target="_blank" rel="noopener">${profile.footerRight.label}</a>`
+  : profile.footerRight.label;
+
+const arrow = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+
+const gridEl = document.getElementById("grid");
+
+function renderCards(filter) {
+  gridEl.innerHTML = "";
+  const list = filter === "Mind"
+    ? reports
+    : reports.filter(r => (r.tags || []).includes(filter));
+
+  list.forEach(r => {
+    const card = document.createElement("article");
+    card.className = "card" + (r.featured ? " featured" : "");
+
+    const frameInner = r.embed
+      ? `<iframe src="${r.embed}" title="${r.title}" allowfullscreen loading="lazy"></iframe>`
+      : `<div class="placeholder">Illeszd be az embed URL-t<br><span style="opacity:.6">reports[].embed</span></div>`;
+
+    const tagsHtml = (r.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+    const openBtn = r.embed
+      ? `<a class="open-link" href="${r.embed}" target="_blank" rel="noopener">Megnyitás új lapon ${arrow}</a>`
+      : `<span style="color:var(--muted);font-size:14px;font-family:'Space Grotesk',sans-serif">Nincs még link</span>`;
+
+    card.innerHTML = `
+      <div class="frame">${frameInner}</div>
+      <div class="card-body">
+        <h3>${r.title}</h3>
+        <p>${r.description}</p>
+        <div class="tags">${tagsHtml}</div>
+        <div class="card-foot">${openBtn}</div>
+      </div>`;
+    gridEl.appendChild(card);
+  });
+}
+
+// build filter buttons from all tags
+const allTags = ["Mind", ...new Set(reports.flatMap(r => r.tags || []))];
+const filtersEl = document.getElementById("filters");
+allTags.forEach((t, i) => {
+  const btn = document.createElement("button");
+  btn.className = "filter-btn" + (i === 0 ? " active" : "");
+  btn.textContent = t;
+  btn.onclick = () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderCards(t);
+  };
+  filtersEl.appendChild(btn);
+});
+
+renderCards("Mind");
+</script>
+</body>
+</html>
