@@ -208,6 +208,14 @@
     letter-spacing: -0.01em;
   }
   .card-body p { color: var(--muted); font-size: 15px; }
+  .card-date {
+    color: var(--cyan);
+    font-size: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    opacity: .8;
+  }
 
   .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 2px; }
   .tag {
@@ -311,40 +319,66 @@ const profile = {
 const reports = [
   {
     title: "BMW értékesítés elemzés",
+    date: "2026.07",
     description: "Márka- és modellszintű értékesítési dashboard, versenyre készült riport.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiMGI4MTZmODUtOGUyNi00NjM3LWE4ZDMtZmM2OTI2NjMzNzhlIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Automotive", "Verseny"],
-    featured: true
-  },
-  {
-    title: "AI2030 – AI hatása a munkaerőpiacra",
-    description: "Teljesen AI-asszisztált, 4 oldalas riport Power BI MCP-vel és Deneb egyedi vizuálokkal, 2 délutányi fejlesztési idő alatt.",
-    embed: "https://app.powerbi.com/view?r=eyJrIjoiYzIyZjIxODMtYjJhZS00YWMzLTk4YjAtYjhkMmNmOTQwNjhhIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["AI", "MCP", "Deneb"]
+    tags: ["Automotive", "Verseny"]
   },
   {
     title: "Agentic RAG hallucináció elemzés",
+    date: "2026.06",
     description: "AI-asszisztált modell egyedi Deneb vizuálokkal és gombnyomásra váltható dinamikus kétnyelvűséggel.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiNDJmYzEwMDctZDc1My00YWJhLWE1ODUtYzAyMDYxYzMxZTA1IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
     tags: ["AI", "Deneb", "RAG"]
   },
   {
+    title: "AI2030 – AI hatása a munkaerőpiacra",
+    date: "2026.06",
+    description: "Teljesen AI-asszisztált, 4 oldalas riport Power BI MCP-vel és Deneb egyedi vizuálokkal, 2 délutányi fejlesztési idő alatt.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiYzIyZjIxODMtYjJhZS00YWMzLTk4YjAtYjhkMmNmOTQwNjhhIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["AI", "MCP", "Deneb"]
+  },
+  {
     title: "Pénzügyi beszámoló dashboard",
+    date: "2025.07",
     description: "Eredménykimutatás, mérleg, valamint korosított vevői és szállítói tartozások. Világos/sötét téma választás és exportálható főkönyvi kivonat.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiZTEyYWNlMmEtZGI1Ny00MWEyLTllNTEtOWI4MGM3MzFkZTVjIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
     tags: ["Controlling", "IBCS", "Finance"]
   },
   {
     title: "Forma-1 statisztikák (1950–2021)",
+    date: "2025.06",
     description: "Formula-1 történeti adatok feldolgozása, dinamikus szűréssel és vizualizációs váltással.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiMDU2NTQ3YzItY2FhNi00OGI1LWJlNjItM2YzZjUxMjhlNGI0IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
     tags: ["Sport", "Adatelemzés"]
   },
   {
     title: "Sales riport – UX fókusz",
+    date: "2025.05",
     description: "Fiktív értékesítési adathalmazból épített interaktív riport, bookmark-alapú navigációval és dinamikus szűréssel.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiM2Y2ODcxNzgtY2Q1Yi00NTAxLTgwZDctZmViMTg5YWRlMWUzIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
     tags: ["Sales", "UX"]
+  },
+  {
+    title: "Adventure Works dashboard",
+    date: "2024.11",
+    description: "Tanfolyami munka, saját ízlésre dizájnolt riport az Adventure Works mintaadatbázisból.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiZTVhMDM3YWItZjNmYi00Nzc5LTk2MGMtOTkzMmJhY2ZmNGE4IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Tanfolyam", "Sales"]
+  },
+  {
+    title: "MVM dashboard",
+    date: "2024.05",
+    description: "Tanfolyami munka, saját ízlésre dizájnolt riport.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiYzEyZDg0ZmQtMjRlYy00NjE5LTgwNTItMWU1N2JhZGU3NDkxIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Tanfolyam", "Energia"]
+  },
+  {
+    title: "Van Arsdel dashboard",
+    date: "2024.01",
+    description: "Álláspályázathoz készült kihívás riport, a Van Arsdel mintaadatbázisra építve.",
+    embed: "https://app.powerbi.com/view?r=eyJrIjoiMmRhZDI0ZmYtYjZjZi00M2EyLTllZTAtMTQxYWY5NDYzOTE0IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
+    tags: ["Retail", "Álláspályázat"]
   }
 ];
 
@@ -396,6 +430,7 @@ function renderCards(filter) {
     card.innerHTML = `
       <div class="frame">${frameInner}</div>
       <div class="card-body">
+        <span class="card-date">${r.date || ""}</span>
         <h3>${r.title}</h3>
         <p>${r.description}</p>
         <div class="tags">${tagsHtml}</div>
