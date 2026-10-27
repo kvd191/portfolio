@@ -3,379 +3,351 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BI Portfólió</title>
+<title>Power BI portfólió | Kovács-Volf Diána, Power BI fejlesztő</title>
+<meta name="description" content="Kovács-Volf Diána Power BI portfóliója: interaktív riportok és dashboardok értékesítés, pénzügy, controlling, HR és AI témákban. Power BI fejlesztés, DAX, Deneb, Power BI MCP." />
+<meta name="keywords" content="Power BI, Power BI fejlesztő, Power BI portfólió, dashboard, riport, DAX, Deneb, controlling, pénzügyi riport" />
+<meta name="author" content="Kovács-Volf Diána" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Power BI portfólió | Kovács-Volf Diána" />
+<meta property="og:description" content="Interaktív Power BI riportok és dashboardok egy helyen." />
+<meta property="og:url" content="https://kvd191.github.io/portfolio/" />
+<link rel="canonical" href="https://kvd191.github.io/portfolio/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%230a6170'/%3E%3Crect x='7' y='24' width='6' height='9' fill='%2366a5ad'/%3E%3Crect x='17' y='18' width='6' height='15' fill='%2366a5ad'/%3E%3Crect x='27' y='9' width='6' height='24' fill='%2300a8cc'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0b1020;
-    --bg-2: #0e1428;
-    --surface: #131b31;
-    --surface-2: #182140;
-    --line: #24304f;
-    --text: #e7ecf5;
-    --muted: #8a97b5;
-    --cyan: #2ee6dc;
-    --violet: #a06bff;
-    --glow-cyan: rgba(46, 230, 220, 0.35);
-    --glow-violet: rgba(160, 107, 255, 0.3);
-    --radius: 16px;
+    --petrol-900: #01273a;
+    --brand: #0a6170;
+    --brand-text: #005a73;
+    --petrol-700: #0a6170;
+    --teal-400: #66a5ad;
+    --cyan-500: #00a8cc;
+    --cyan-600: #007a99;
+    --cyan-100: #a3e3ed;
+    --surface: #f0f7f9;
+    --surface-alt: #e6f0f2;
+    --white: #ffffff;
+    --anthracite-700: #3a3d3f;
+    --muted: #5f6b6d;
+    --font: "Titillium Web", "Segoe UI", Arial, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Inter", system-ui, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* isometric grid glow behind hero */
-  .bg-grid {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 46px 46px;
-    opacity: 0.14;
-    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
-    pointer-events: none;
-  }
-
-  .wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- HERO ---------- */
-  header {
-    padding: 88px 0 48px;
-  }
-
-  .eyebrow {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 22px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 1px;
-    background: var(--cyan);
-    box-shadow: 0 0 10px var(--glow-cyan);
-  }
-
-  h1 {
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: clamp(38px, 6vw, 66px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-  }
-  h1 .accent {
-    background: linear-gradient(100deg, var(--cyan), var(--violet));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .lead {
-    margin-top: 22px;
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 18px;
-  }
-
-  .meta {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .chip {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 13px;
-    padding: 8px 15px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--muted);
     background: var(--surface);
+    color: var(--petrol-900);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  .chip a { color: var(--cyan); text-decoration: none; }
-  .chip a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan-500); outline-offset: 3px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- FILTERS ---------- */
-  .filters {
+  /* ---------- Fejléc ---------- */
+  .hero {
+    position: relative;
+    color: var(--white);
+    background-color: #0a6170;
+    background-image:
+      radial-gradient(ellipse at 35% 40%, rgba(24, 120, 134, 0.9), rgba(10, 97, 112, 0) 60%),
+      linear-gradient(rgba(163, 227, 237, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(163, 227, 237, 0.06) 1px, transparent 1px),
+      linear-gradient(120deg, #0f6a79 0%, #0a6170 50%, #064e5a 100%);
+    background-size: auto, 46px 46px, 46px 46px, auto;
+  }
+  .masthead {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 46px 0 30px;
-    padding-top: 34px;
-    border-top: 1px solid var(--line);
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(163, 227, 237, 0.2);
   }
-  .filter-btn {
-    font-family: "Space Grotesk", sans-serif;
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--white); }
+  .logo-mark { background: var(--white); padding: 6px 8px; display: flex; }
+  .logo-mark svg { width: 66px; height: 22px; display: block; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-name { font-size: 22px; font-weight: 700; letter-spacing: 0.32em; }
+  .logo-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.34em; color: var(--cyan-100); }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .meta-link {
     font-size: 14px;
-    padding: 9px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.18s ease;
-  }
-  .filter-btn:hover { color: var(--text); border-color: var(--cyan); }
-  .filter-btn.active {
-    color: var(--bg);
-    background: var(--cyan);
-    border-color: var(--cyan);
-    box-shadow: 0 0 22px var(--glow-cyan);
     font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cyan-100);
+    text-decoration: none;
+    border: 1px solid rgba(163, 227, 237, 0.5);
+    padding: 7px 14px;
   }
+  .meta-link:hover { background: var(--cyan-100); color: var(--petrol-900); }
 
-  /* ---------- GRID ---------- */
+  .hero-body { padding: 72px 0 64px; }
+  h1 { color: var(--white); font-size: clamp(40px, 6vw, 66px); line-height: 1.02; text-transform: uppercase; font-weight: 200; }
+  h1 b { font-weight: 700; }
+  .lead { margin-top: 20px; max-width: 560px; font-size: 18px; font-weight: 300; color: #cde7ec; }
+
+  /* ---------- Szűrők ---------- */
+  .filters-bar { background: var(--surface-alt); border-bottom: 1px solid #d3e2e6; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px 34px; padding: 18px 24px; }
+  .filter-btn {
+    font-family: var(--font);
+    font-size: 19px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--petrol-700);
+    background: none;
+    border: 0;
+    padding: 2px 0;
+    cursor: pointer;
+  }
+  .filter-btn:hover { color: var(--petrol-900); }
+  .filter-btn.is-active { font-weight: 700; color: var(--petrol-900); }
+  .filter-count { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 4px; }
+
+  /* ---------- Kártyák ---------- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 26px;
-    padding-bottom: 90px;
+    gap: 20px;
+    padding: 36px 0 64px;
   }
-
   .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
+    background: var(--petrol-700);
+    color: var(--white);
     display: flex;
     flex-direction: column;
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: var(--cyan);
-    box-shadow: 0 18px 40px -18px var(--glow-cyan);
+    box-shadow: 0 4px 10px rgba(10, 97, 112, 0.18);
   }
   .card.featured { grid-column: 1 / -1; }
-
-  .frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: var(--bg-2);
-    border-bottom: 1px solid var(--line);
-  }
+  .frame { position: relative; aspect-ratio: 16 / 10; background: #01273a; }
   .card.featured .frame { aspect-ratio: 16 / 7; }
-  .frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-
+  .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
   .frame .placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--muted);
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 14px;
-    text-align: center;
-    padding: 20px;
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--cyan-100); font-size: 14px; text-align: center; padding: 20px;
   }
-
-  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .card-body h3 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .card-body p { color: var(--muted); font-size: 15px; }
-  .card-date {
-    color: var(--cyan);
-    font-size: 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    opacity: .8;
-  }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 2px; }
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .card-date { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--cyan-100); }
+  .card-cat { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan-100); }
+  .card h3 { font-size: 20px; font-weight: 600; line-height: 1.25; }
+  .card p { font-size: 15px; font-weight: 300; color: #d6ecf0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
-    font-size: 12px;
-    font-family: "Space Grotesk", sans-serif;
-    color: var(--violet);
-    background: rgba(160, 107, 255, 0.1);
-    border: 1px solid rgba(160, 107, 255, 0.25);
-    padding: 3px 10px;
-    border-radius: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--cyan-100);
+    border: 1px solid rgba(163, 227, 237, 0.4);
+    padding: 1px 8px;
   }
-
-  .card-foot {
-    margin-top: auto;
-    padding-top: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  .card-foot { margin-top: auto; padding-top: 14px; }
   .open-link {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 14px;
-    color: var(--cyan);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
+    display: inline-flex; align-items: center; gap: 12px;
+    color: var(--white); text-decoration: none;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   }
-  .open-link:hover { gap: 11px; }
-  .open-link svg { transition: transform 0.18s ease; }
+  .sq {
+    width: 30px; height: 30px; border: 1px solid var(--cyan-100); color: var(--cyan-100);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .sq svg { width: 14px; height: 14px; }
+  .open-link:hover .sq { background: var(--cyan-100); color: var(--petrol-900); }
+  .empty { grid-column: 1 / -1; color: var(--muted); }
 
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 34px 0 60px;
-    color: var(--muted);
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 14px;
+  /* ---------- Számok ---------- */
+  .stats-bar { background: var(--white); border-top: 1px solid var(--surface-alt); }
+  .stats { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 48px; padding: 44px 24px; }
+  .stats > div { flex: 0 1 auto; min-width: 180px; }
+  .stat-num { font-size: clamp(32px, 3.4vw, 44px); font-weight: 200; line-height: 1.05; color: var(--brand-text); white-space: nowrap; }
+  .stat-num.hl { color: var(--cyan-600); }
+  .stat-label { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--muted); max-width: 240px; }
+
+  /* ---------- Lábléc ---------- */
+  footer { background: var(--anthracite-700); color: var(--white); }
+  .foot { padding: 44px 24px 26px; }
+  .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; }
+  .foot-name { font-size: clamp(26px, 4vw, 38px); line-height: 1.1; text-transform: uppercase; white-space: nowrap; }
+  .foot-name b { font-weight: 700; }
+  .foot-name span { font-weight: 200; }
+  .foot-role { margin-top: 4px; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan-100); }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+  .foot-links a { color: var(--cyan-100); text-decoration: none; font-size: 16px; font-weight: 300; }
+  .foot-links a:hover { text-decoration: underline; }
+  .foot-bottom {
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; color: #c9cdcf;
   }
-  footer a { color: var(--cyan); text-decoration: none; }
 
   @media (max-width: 640px) {
-    header { padding: 60px 0 34px; }
+    .hero-body { padding: 48px 0 40px; }
     .grid { grid-template-columns: 1fr; }
+    .foot-name { white-space: normal; }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto; }
-  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-  <div class="bg-grid" aria-hidden="true"></div>
 
+<header class="hero">
   <div class="wrap">
-    <header>
-      <span class="eyebrow" id="eyebrow">Power BI · Fabric</span>
-      <h1 id="title"></h1>
+    <div class="masthead">
+      <a class="logo" href="#" aria-label="KVD, Adatból döntés">
+        <span class="logo-mark">
+          <svg viewBox="0 0 120 40" aria-hidden="true">
+            <rect x="8" y="28" width="12" height="10" fill="#0A6170"></rect>
+            <rect x="28" y="22" width="12" height="16" fill="#0A6170"></rect>
+            <rect x="48" y="24" width="12" height="14" fill="#0A6170"></rect>
+            <rect x="68" y="15" width="12" height="23" fill="#0A6170"></rect>
+            <rect x="88" y="10" width="12" height="28" fill="#00A8CC"></rect>
+            <polyline points="14,22 34,16 54,18 74,9 94,4" fill="none" stroke="#01273A" stroke-width="1.6"></polyline>
+            <circle cx="14" cy="22" r="2.4" fill="#01273A"></circle>
+            <circle cx="34" cy="16" r="2.4" fill="#01273A"></circle>
+            <circle cx="54" cy="18" r="2.4" fill="#01273A"></circle>
+            <circle cx="74" cy="9" r="2.4" fill="#01273A"></circle>
+            <circle cx="94" cy="4" r="3.4" fill="#00A8CC"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-name">KVD</span><span class="logo-tag">ADATBÓL DÖNTÉS</span></span>
+      </a>
+      <nav class="meta" id="meta" aria-label="Elérhetőségek"></nav>
+    </div>
+    <div class="hero-body">
+      <h1><b>Power BI</b> portfólió</h1>
       <p class="lead" id="lead"></p>
-      <div class="meta" id="meta"></div>
-    </header>
+    </div>
+  </div>
+</header>
 
-    <nav class="filters" id="filters" aria-label="Szűrés téma szerint"></nav>
+<div class="filters-bar">
+  <nav class="filters wrap" id="filters" aria-label="Szűrés téma szerint"></nav>
+</div>
 
-    <main class="grid" id="grid"></main>
+<div class="wrap">
+  <main class="grid" id="grid" aria-live="polite"></main>
+</div>
 
-    <footer>
+<section class="stats-bar" aria-label="Számokban">
+  <div class="stats wrap" id="stats"></div>
+</section>
+
+<footer>
+  <div class="foot wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-name"><b>Kovács-Volf</b> <span>Diána</span></div>
+        <div class="foot-role">Power BI fejlesztő</div>
+      </div>
+      <nav class="foot-links" id="foot-links" aria-label="Kapcsolat"></nav>
+    </div>
+    <div class="foot-bottom">
       <span id="foot-left"></span>
       <span id="foot-right"></span>
-    </footer>
+    </div>
   </div>
+</footer>
 
 <script>
 /* ============================================================
-   1. PROFIL  — írd át a saját adataidra
+   1. PROFIL  (írd át a saját adataidra)
    ============================================================ */
 const profile = {
-  eyebrow: "Power BI · DAX · Deneb",
-  nameLead: "BI",                 // normál színnel
-  nameAccent: "portfólió",        // színátmenetes kiemeléssel
-  lead: "Interaktív riportok és dashboardok egy helyen. Kattints bármelyikbe a felfedezéshez.",
-  meta: [
-    { label: "Kovács-Volf Diána" },
+  lead: "Interaktív riportok és dashboardok egy helyen. Kattints bármelyikre a felfedezéshez.",
+  links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/diana-kovacs-volf/" },
     { label: "Kapcsolat", url: "mailto:volfdia191@gmail.com" }
   ],
+  stats: [
+    { num: "20+", label: "éles riport céges és megbízásos munkában" },
+    { num: "10+", label: "saját projekt és versenyriport" },
+    { num: "4-5 nap → 3 óra", label: "havi riportkészítés Excel helyett Power BI-jal", highlight: true },
+    { num: "REFA", label: "controller" }
+  ],
   footerLeft: "© 2026 Kovács-Volf Diána",
-  footerRight: { label: "Készült Power BI Publish to Web beágyazással", url: "" }
+  footerRight: "Készült Power BI Publish to Web beágyazással"
 };
 
 /* ============================================================
-   2. RIPORTOK — minden új riporthoz adj egy blokkot a listához.
-   embed: a Power BI "Beágyazás weboldalon / Publish to Web"
-          kódból KIMÁSOLT src URL (app.powerbi.com/view?r=...).
-          Ha üresen hagyod, egy helykitöltő jelenik meg.
+   2. RIPORTOK  (minden új riporthoz adj egy blokkot a listához)
+   embed:    a Power BI "Publish to Web" kódból kimásolt src URL
+   category: EGY téma; a szűrősáv ebből épül, így minden riport
+             pontosan egy szűrő alatt jelenik meg
+   tags:     technikai címkék a kártyán (nem szűrnek)
    featured: true  -> teljes szélességű, kiemelt kártya
-   tags: a szűrőgombok ezekből épülnek fel automatikusan
    ============================================================ */
 const reports = [
   {
-    title: "BMW értékesítés elemzés",
+    title: "BMW értékesítés",
     date: "2026.07",
+    category: "Értékesítés",
     description: "Márka- és modellszintű értékesítési dashboard, versenyre készült riport.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiMGI4MTZmODUtOGUyNi00NjM3LWE4ZDMtZmM2OTI2NjMzNzhlIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Automotive", "Verseny"]
+    tags: ["Verseny", "HTML vizuál"]
   },
   {
     title: "Agentic RAG hallucináció elemzés",
     date: "2026.06",
+    category: "AI",
     description: "AI-asszisztált modell egyedi Deneb vizuálokkal és gombnyomásra váltható dinamikus kétnyelvűséggel.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiNDJmYzEwMDctZDc1My00YWJhLWE1ODUtYzAyMDYxYzMxZTA1IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["AI", "Deneb", "RAG"]
+    tags: ["Deneb", "Kétnyelvű"]
   },
   {
-    title: "AI2030 – AI hatása a munkaerőpiacra",
+    title: "AI2030: AI hatása a munkaerőpiacra",
     date: "2026.06",
+    category: "AI",
     description: "Teljesen AI-asszisztált, 4 oldalas riport Power BI MCP-vel és Deneb egyedi vizuálokkal, 2 délutányi fejlesztési idő alatt.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiYzIyZjIxODMtYjJhZS00YWMzLTk4YjAtYjhkMmNmOTQwNjhhIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["AI", "MCP", "Deneb"]
+    tags: ["Power BI MCP", "Deneb", "Verseny"]
   },
   {
-    title: "Pénzügyi beszámoló dashboard",
+    title: "Pénzügyi beszámoló",
     date: "2025.07",
+    category: "Pénzügy és controlling",
     description: "Eredménykimutatás, mérleg, valamint korosított vevői és szállítói tartozások. Világos/sötét téma választás és exportálható főkönyvi kivonat.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiZTEyYWNlMmEtZGI1Ny00MWEyLTllNTEtOWI4MGM3MzFkZTVjIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Controlling", "IBCS", "Finance"]
+    tags: ["IBCS", "Témaváltás"]
   },
   {
-    title: "Forma-1 statisztikák (1950–2021)",
+    title: "Forma-1 statisztikák (1950-2021)",
     date: "2025.06",
+    category: "Sport",
     description: "Formula-1 történeti adatok feldolgozása, dinamikus szűréssel és vizualizációs váltással.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiMDU2NTQ3YzItY2FhNi00OGI1LWJlNjItM2YzZjUxMjhlNGI0IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Sport", "Adatelemzés"]
+    tags: ["Dinamikus vizuálváltás"]
   },
   {
-    title: "Sales riport – UX fókusz",
+    title: "MavenTech értékesítés",
     date: "2025.05",
+    category: "Értékesítés",
     description: "Fiktív értékesítési adathalmazból épített interaktív riport, bookmark-alapú navigációval és dinamikus szűréssel.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiM2Y2ODcxNzgtY2Q1Yi00NTAxLTgwZDctZmViMTg5YWRlMWUzIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Sales", "UX"]
+    tags: ["UX", "Bookmark navigáció"]
   },
   {
-    title: "Adventure Works dashboard",
+    title: "Adventure Works",
     date: "2024.11",
+    category: "Értékesítés",
     description: "Tanfolyami munka, saját ízlésre dizájnolt riport az Adventure Works mintaadatbázisból.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiZTVhMDM3YWItZjNmYi00Nzc5LTk2MGMtOTkzMmJhY2ZmNGE4IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Tanfolyam", "Sales"]
+    tags: ["Tanfolyam"]
   },
   {
-    title: "MVM dashboard",
+    title: "MVM recruitment",
     date: "2024.05",
+    category: "HR",
     description: "Tanfolyami munka, saját ízlésre dizájnolt riport.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiYzEyZDg0ZmQtMjRlYy00NjE5LTgwNTItMWU1N2JhZGU3NDkxIiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
-    tags: ["Tanfolyam", "Energia"]
+    tags: ["Tanfolyam"]
   },
   {
-    title: "Van Arsdel dashboard",
+    title: "Van Arsdel értékesítés",
     date: "2024.01",
+    category: "Értékesítés",
     description: "Retail elemzés a Van Arsdel mintaadatbázisra építve.",
     embed: "https://app.powerbi.com/view?r=eyJrIjoiMmRhZDI0ZmYtYjZjZi00M2EyLTllZTAtMTQxYWY5NDYzOTE0IiwidCI6ImVmNmQxOGUwLWNjY2YtNDQ3ZS05NTRjLWMyYjRiMTZlNDAxZSIsImMiOjl9",
     tags: ["Retail"]
@@ -383,74 +355,65 @@ const reports = [
 ];
 
 /* ============================================================
-   3. RENDER — ez alá már nem kell nyúlnod
+   3. MEGJELENÍTÉS  (ez alá már nem kell nyúlnod)
    ============================================================ */
-document.getElementById("eyebrow").textContent = profile.eyebrow;
-document.getElementById("title").innerHTML =
-  `${profile.nameLead} <span class="accent">${profile.nameAccent}</span>`;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="8 7 17 7 17 16"></polyline></svg>`;
+const isExternal = u => /^https?:/.test(u);
+
 document.getElementById("lead").textContent = profile.lead;
-
-const metaEl = document.getElementById("meta");
-profile.meta.forEach(m => {
-  const chip = document.createElement("span");
-  chip.className = "chip";
-  chip.innerHTML = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.label}</a>` : m.label;
-  metaEl.appendChild(chip);
-});
-
+const linkHtml = cls => profile.links.map(l =>
+  `<a class="${cls}" href="${esc(l.url)}"${isExternal(l.url) ? ' target="_blank" rel="noopener"' : ""}>${esc(l.label)}</a>`).join("");
+document.getElementById("meta").innerHTML = linkHtml("meta-link");
+document.getElementById("foot-links").innerHTML = linkHtml("");
 document.getElementById("foot-left").textContent = profile.footerLeft;
-const fr = document.getElementById("foot-right");
-fr.innerHTML = profile.footerRight.url
-  ? `<a href="${profile.footerRight.url}" target="_blank" rel="noopener">${profile.footerRight.label}</a>`
-  : profile.footerRight.label;
-
-const arrow = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+document.getElementById("foot-right").textContent = profile.footerRight;
+document.getElementById("stats").innerHTML = profile.stats.map(s =>
+  `<div><div class="stat-num${s.highlight ? " hl" : ""}">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>`).join("");
 
 const gridEl = document.getElementById("grid");
-
 function renderCards(filter) {
-  gridEl.innerHTML = "";
-  const list = filter === "Mind"
-    ? reports
-    : reports.filter(r => (r.tags || []).includes(filter));
-
-  list.forEach(r => {
-    const card = document.createElement("article");
-    card.className = "card" + (r.featured ? " featured" : "");
-
-    const frameInner = r.embed
-      ? `<iframe src="${r.embed}" title="${r.title}" allowfullscreen loading="lazy"></iframe>`
-      : `<div class="placeholder">Illeszd be az embed URL-t<br><span style="opacity:.6">reports[].embed</span></div>`;
-
-    const tagsHtml = (r.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
-    const openBtn = r.embed
-      ? `<a class="open-link" href="${r.embed}" target="_blank" rel="noopener">Megnyitás új lapon ${arrow}</a>`
-      : `<span style="color:var(--muted);font-size:14px;font-family:'Space Grotesk',sans-serif">Nincs még link</span>`;
-
-    card.innerHTML = `
-      <div class="frame">${frameInner}</div>
-      <div class="card-body">
-        <span class="card-date">${r.date || ""}</span>
-        <h3>${r.title}</h3>
-        <p>${r.description}</p>
-        <div class="tags">${tagsHtml}</div>
-        <div class="card-foot">${openBtn}</div>
-      </div>`;
-    gridEl.appendChild(card);
-  });
+  const list = filter === "Mind" ? reports : reports.filter(r => r.category === filter);
+  if (!list.length) {
+    gridEl.innerHTML = `<p class="empty">Ehhez a témához még nincs riport. Válassz másik témát a fenti sávban.</p>`;
+    return;
+  }
+  gridEl.innerHTML = list.map(r => {
+    const frame = r.embed
+      ? `<iframe src="${esc(r.embed)}" title="${esc(r.title)}" allowfullscreen loading="lazy"></iframe>`
+      : `<div class="placeholder">Illeszd be az embed URL-t (reports[].embed)</div>`;
+    const open = r.embed
+      ? `<a class="open-link" href="${esc(r.embed)}" target="_blank" rel="noopener">Megnyitás új lapon <span class="sq">${arrow}</span></a>`
+      : "";
+    const tags = (r.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+    return `
+      <article class="card${r.featured ? " featured" : ""}">
+        <div class="frame">${frame}</div>
+        <div class="card-body">
+          <div class="card-top"><span class="card-date">${esc(r.date)}</span><span class="card-cat">${esc(r.category)}</span></div>
+          <h3>${esc(r.title)}</h3>
+          <p>${esc(r.description)}</p>
+          ${tags ? `<div class="tags">${tags}</div>` : ""}
+          <div class="card-foot">${open}</div>
+        </div>
+      </article>`;
+  }).join("");
 }
 
-// build filter buttons from all tags
-const allTags = ["Mind", ...new Set(reports.flatMap(r => r.tags || []))];
+/* Szűrősáv: témák, a riportok darabszámával */
+const cats = [...new Set(reports.map(r => r.category))];
 const filtersEl = document.getElementById("filters");
-allTags.forEach((t, i) => {
+[["Mind", reports.length], ...cats.map(c => [c, reports.filter(r => r.category === c).length])].forEach(([name, n], i) => {
   const btn = document.createElement("button");
-  btn.className = "filter-btn" + (i === 0 ? " active" : "");
-  btn.textContent = t;
+  btn.type = "button";
+  btn.className = "filter-btn" + (i === 0 ? " is-active" : "");
+  btn.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  btn.innerHTML = `${esc(name)}<span class="filter-count">${n}</span>`;
   btn.onclick = () => {
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    renderCards(t);
+    filtersEl.querySelectorAll(".filter-btn").forEach(b => { b.classList.remove("is-active"); b.setAttribute("aria-pressed", "false"); });
+    btn.classList.add("is-active");
+    btn.setAttribute("aria-pressed", "true");
+    renderCards(name);
   };
   filtersEl.appendChild(btn);
 });
